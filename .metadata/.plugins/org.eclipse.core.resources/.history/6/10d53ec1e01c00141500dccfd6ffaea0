@@ -1,0 +1,20 @@
+package cscd454.dnd.Items;
+
+public class ArmorFactory extends EquipmentFactory 
+{
+	private ArmorEquipment armor;
+	
+	public ArmorFactory(int lvl) { super(lvl); }
+	
+	@Override
+	public void generateStats() 
+	{
+		
+	}
+	
+	public String generateArmorType()
+	{
+		
+	}
+
+}

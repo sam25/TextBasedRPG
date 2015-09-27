@@ -1,0 +1,20 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.StatHolder;
+
+public class OneHandWeapon extends WeaponEquipment 
+{
+	public OneHandWeapon(StatHolder stats,
+			  String name,
+			  String desc, 
+			  String type,
+			  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+	}
+
+	public void setWeaponType(String type)
+	{
+		
+	}
+}

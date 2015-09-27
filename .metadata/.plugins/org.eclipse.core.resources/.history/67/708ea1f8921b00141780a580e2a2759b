@@ -1,0 +1,41 @@
+package cscd454.dnd.Items;
+
+import java.sql.*;
+
+public class ItemInfoHandler 
+{
+	private static ItemInfoHandler handler = new ItemInfoHandler();
+	private static Statement stmt = null;
+	
+	
+	private ItemInfoHandler() {}
+	
+	public static synchronized ItemInfoHandler getInstance()
+	{
+		return handler;
+	}
+	
+	public static void setStatement(Statement statement)
+	{
+		if(statement != null)
+			return;
+		
+		stmt = statement;
+	}
+	
+	public int getMaxNumStats(String equipType, int level)
+	{
+		
+	}
+	
+	public int getNumStatPoints(String equipType, int level)
+	{
+		
+		// perform query here
+	}
+	
+	public String[] getWeaponStatOtions(String weaponType)
+	{
+		// perform query here
+	}
+}

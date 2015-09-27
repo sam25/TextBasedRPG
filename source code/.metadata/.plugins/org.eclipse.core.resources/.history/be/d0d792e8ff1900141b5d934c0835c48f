@@ -1,0 +1,59 @@
+package cscd454.dnd.Stats;
+
+import cscd454.dnd.Utils.OverflowChecker;
+
+public class BasicStat extends Stat 
+{
+	public BasicStat(double value, String type)
+	{
+		super(value, type);
+	}
+	
+	public static boolean isPrimaryStat(Stat s)
+	{
+		// maybe use database
+		if(s.getType().equals("Strength") ||
+		   s.getType().equals("Dexterity") ||
+		   s.getType().equals("Intelligence") ||
+		   s.getType().equals("Wisdom") ||
+		   s.getType().equals("Constitution")) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean isCombatStat(Stat s)
+	{
+		if(s.getType().equals("Parry") ||
+		   s.getType().equals("Block") ||
+		   s.getType().equals("Damage")) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean isBasicStat(Stat s)
+	{
+		return (BasicStat.isPrimaryStat(s) || BasicStat.isCombatStat(s)) ? true : false;
+	}
+	
+	@Override
+	public Stat getInstance() 
+	{
+		return new BasicStat(getValue(), getType());
+	}
+
+	
+	public BasicStat add(BasicStat stat)
+	{
+		if(!stat.getType.equals(getType())) {
+			return getInstance();
+		}
+		
+		
+	}
+}

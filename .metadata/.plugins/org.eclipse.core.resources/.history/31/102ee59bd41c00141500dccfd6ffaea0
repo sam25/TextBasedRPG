@@ -1,0 +1,6 @@
+package cscd454.dnd.Items;
+
+public abstract class EquipmentFactory 
+{
+
+}

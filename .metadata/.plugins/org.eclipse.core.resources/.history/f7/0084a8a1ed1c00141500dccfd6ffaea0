@@ -1,0 +1,14 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.StatHolder;
+
+public class TwoHandWeapon extends WeaponEquipment 
+{
+	public TwoHandWeapon(StatHolder stats,
+			  String name,
+			  String desc, 
+			  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+	}
+}

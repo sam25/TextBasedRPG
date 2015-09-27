@@ -1,0 +1,31 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ * 
+ * Mitigation Stat Class
+ */
+
+package cscd454.dnd.Stats;
+
+public class Mitigation extends Stat
+{	
+	public Mitigation(double mitigationVal)
+	{
+		super(mitigationVal, "Mitigation");
+	}
+
+	// return a new copy
+	@Override
+	public Stat getInstance()
+	{
+		return new Mitigation(getValue());
+	}
+	
+	// get an attack after getValue()
+	public Stat getAfterMitigationAttack(Stat atk)
+	{
+		return atk.multiply(getValue());
+	}
+}

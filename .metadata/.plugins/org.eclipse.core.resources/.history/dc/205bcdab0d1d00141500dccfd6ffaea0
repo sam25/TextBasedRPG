@@ -1,0 +1,80 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ * 
+ * Stat Class
+ */
+
+package cscd454.dnd.Stats;
+
+import cscd454.dnd.Utils.OverflowChecker;
+
+public abstract class Stat{
+
+	private double value;
+	private String type;
+	
+	protected Stat(double value, String type)
+	{		
+		this.value = value;
+		this.type = type;
+	}
+	
+	protected double getValue() { return value;	}
+	protected void setValue(double val)	{ value = val; }
+	
+	public String getType() { return type; }
+	
+	protected double add(double value)
+	{
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), value))
+		{
+			System.err.println("Addition of (" + getValue() + " + " + value + ") causes overflow");
+			return getValue();
+		}
+		
+		return getValue() + value;
+	}
+	
+	protected double subtract(double value)
+	{		
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), value))
+		{
+			System.err.println("Subtraction of (" + getValue() + " - " + value + ") causes overflow");
+			return getValue();
+		}
+		
+		
+		return getValue() - value;
+	}
+	
+	protected double multiply(double value)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), value))
+		{
+			System.err.println("Multiplication of (" + getValue() + " * " + value + ") causes overflow");
+			return getValue();
+		}
+		
+		return getValue() *  value;
+	}
+	
+	protected double divide(double value)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), 1/value))
+		{
+			System.err.println("Division of (" + getValue() + " / " + value + ") causes overflow");
+			return getValue();
+		}
+		
+		return getValue() / value;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return type + ": " + value;
+	}
+}

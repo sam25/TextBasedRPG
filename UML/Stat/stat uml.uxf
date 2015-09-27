@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>637</x>
+      <y>490</y>
+      <w>175</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>Armor
+--
+_-MITIGATION_CONSTANT : int_
+--
++getMitigation() : Mitigation
++getInstance() : Armor
++add(Armor stat) : Armor
++subtract(Armor stat) : Armor
++multiply(Armor stat) : Armor
++divide(Armor stat) : Armor
++grantArmor(Stat stat) : Armor
++reduceArmor(Stat stat) : Armor</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>987</x>
+      <y>490</y>
+      <w>245</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Mitigation
+--
++getAfterMitigationAttack(BasicStat atk) : BasicAttack
++add(Armor stat) : Mitigation
++subtract(Mitigation stat) : Mitigation
++multiply(Mitigation stat) : Mitigation
++divide(Mitigation stat) : Mitigation</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1246</x>
+      <y>490</y>
+      <w>196</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Health
+--
++getInstance() : Health
++sufferAttack(Stat atk) : Health
++isAboveZero() : boolean
++add(Health stat) : Health
++subtract(Health stat) : Health
++multiply(Health stat) : Health
++divide(Health stat) : Health
++sufferAttack(BasicStat atk) : Health
++recieveHeal(BasicStat heal) : Health
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>819</x>
+      <y>490</y>
+      <w>161</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>Weight
+--
++getInstance() : Weight
++isEquipable(Weight wt) : boolean
++add(Weight stat) : Weight
++subtract(Weight stat) : Weight</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>707</x>
+      <y>301</y>
+      <w>244</w>
+      <h>202</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>231;21;21;189</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>882</x>
+      <y>301</y>
+      <w>90</w>
+      <h>202</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>77;21;21;189</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>980</x>
+      <y>301</y>
+      <w>139</w>
+      <h>202</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;126;189</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1008</x>
+      <y>301</y>
+      <w>335</w>
+      <h>202</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;322;189</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>875</x>
+      <y>133</y>
+      <w>175</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>/Stat/
+--
+-value : double
+-type : String
+--
++getValue() : double
+#setValue(double val) : void
++getType() : String
+#add(double value)) : double
+#subtract(double value) : double
+#multiply(double value) : double
+#divide(double value) : double
++toString() : String
++valueGreaterThan(Stat s) : boolean
++valueEqualTo(Stat s) : boolean
++valueLessThan(Stat s) : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>511</x>
+      <y>301</y>
+      <w>412</w>
+      <h>202</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>399;21;21;189</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>448</x>
+      <y>490</y>
+      <w>175</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>BasicStat
+--
++isPrimaryStat(Stat s) : boolean
++isCombatStat(Stat s) : boolean
++isBasicStat(Stat s) : boolean
++getInstance() : BasicStat
++add(BasicStat stat) : BasicStat
++subtract(BasicStat stat) : BasicStat
++multiply(BasicStat stat) : BasicStat
++divide(BasicStat stat) : BasicStat
+-normalize() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>434</x>
+      <y>175</y>
+      <w>364</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;final&gt;&gt;
+OverflowChecker
+--
+_+integerAdditionCausesOverflow(int int1, int int2) : boolean_
+_+integerMultiplicationCausesOverflow(int int1, int int2) : boolean_
+_+longAdditionCausesOverflow(long long1, long long2) : boolean_
+_+longMultiplicationCausesOverflow(long long1, long long2) : boolean_
+_+doubleAdditionCausesOverflow(double double1, double double2) : boolean_
+_+doubleMultiplicationCausesOverflow(double double1, double double2) : boolean_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>777</x>
+      <y>210</y>
+      <w>111</w>
+      <h>34</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>98;21;21;21</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,35 @@
+package cscd454.dnd.Items;
+
+public class ArmorFactory extends EquipmentFactory 
+{
+	private ArmorEquipment armor;
+	
+	public ArmorFactory(int lvl) { super(lvl); }
+	
+	@Override
+	public void generateStats() 
+	{
+		
+	}
+	
+	public ArmorEquipment createArmor()
+	{
+		generateStats();
+		
+		
+	}
+	
+	public String generateArmorType()
+	{
+		int armorTypeIndicator = this.rand.nextInt() % 3;
+		
+		if(armorTypeIndicator == 0) {
+			return "Light";
+		} else if(armorTypeIndicator == 1) {
+			return "Medium";
+		} else {
+			return "Heavy";
+		}
+	}
+
+}

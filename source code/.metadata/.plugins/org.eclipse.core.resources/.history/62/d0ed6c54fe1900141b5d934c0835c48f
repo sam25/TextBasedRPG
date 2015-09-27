@@ -1,0 +1,140 @@
+package cscd454.dnd.Stats;
+
+import cscd454.dnd.Utils.OverflowChecker;
+
+public class BasicStat extends Stat 
+{
+	public BasicStat(double value, String type)
+	{
+		super(value, type);
+	}
+	
+	public Stat add(double stat)
+	{
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), stat))
+		{
+			System.err.println("Addition of (" + getValue() + " + " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() + stat, getType());
+	}
+	
+	public Stat add(BasicStat stat)
+	{		
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), stat.getValue()))
+		{
+			System.err.println("Addition of (" + getValue() + " + " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(this.getValue() + stat.getValue(), getType());
+	}
+
+	public Stat subtract(double stat)
+	{
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), stat))
+		{
+			System.err.println("Subtraction of (" + getValue() + " - " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() - stat, getType());
+		
+	}
+	
+	protected Stat subtract(BasicStat stat)
+	{		
+		if(OverflowChecker.doubleAdditionCausesOverflow(getValue(), -stat.getValue()))
+		{
+			System.err.println("Subtraction of (" + getValue() + " - " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		
+		return new BasicStat(this.getValue() - stat.getValue(), getType());
+	}
+	
+	public Stat multiply(double stat)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), stat))
+		{
+			System.err.println("Multiplication of (" + getValue() + " * " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() *  stat, getType());
+	}
+	
+	public Stat multiply(BasicStat stat)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), stat.getValue()))
+		{
+			System.err.println("Multiplication of (" + getValue() + " * " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() *  stat.getValue(), getType());
+	}
+	
+	public Stat divide(double stat)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), 1/stat))
+		{
+			System.err.println("Division of (" + getValue() + " / " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() /  stat, getType());
+	}
+	
+	public Stat divide(BasicStat stat)
+	{
+		if(OverflowChecker.doubleMultiplicationCausesOverflow(getValue(), 1/stat.getValue()))
+		{
+			System.err.println("Multiplication of (" + getValue() + " / " + stat + ") causes overflow");
+			return getInstance();
+		}
+		
+		return new BasicStat(getValue() /  stat.getValue(), getType());
+	}
+	
+	public static boolean isPrimaryStat(Stat s)
+	{
+		// maybe use database
+		if(s.getType().equals("Strength") ||
+		   s.getType().equals("Dexterity") ||
+		   s.getType().equals("Intelligence") ||
+		   s.getType().equals("Wisdom") ||
+		   s.getType().equals("Constitution")) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean isCombatStat(Stat s)
+	{
+		if(s.getType().equals("Parry") ||
+		   s.getType().equals("Block") ||
+		   s.getType().equals("Damage")) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static boolean isBasicStat(Stat s)
+	{
+		return (BasicStat.isPrimaryStat(s) || BasicStat.isCombatStat(s)) ? true : false;
+	}
+	
+	@Override
+	public Stat getInstance() 
+	{
+		return new BasicStat(getValue(), getType());
+	}
+
+}

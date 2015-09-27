@@ -1,0 +1,44 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class ArmorEquipment extends Equipment 
+{
+	private boolean hasArmorType;
+	private Armor armorVal;
+	private String armorType;
+	
+	public ArmorEquipment(StatHolder stats,
+						  String name,
+						  String desc, 
+						  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+		
+		armorVal = stats.getArmor();
+		armorType = stats.getArmorType();
+		
+		hasArmorType = hasValidArmorType(armorType) ? true : false;
+	}
+	
+	public static boolean hasValidArmorType(String a)
+	{
+		if(a.equalsIgnoreCase("light") ||
+		   a.equalsIgnoreCase("medium") ||
+		   a.equalsIgnoreCase("heavy"))
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean isSameArmorType(String type)
+	{
+		return armorType.equalsIgnoreCase(type);
+	}
+
+
+}
+
+

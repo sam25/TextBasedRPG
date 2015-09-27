@@ -1,0 +1,61 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ */
+
+package cscd454.dnd.Abilities;
+
+import java.util.ArrayList;
+
+import cscd454.dnd.Characters.CharacterEntity;
+
+public abstract class ActiveAbility implements Ability
+{
+	protected String _name;
+	protected String _description;
+	protected CharacterEntity _master;
+	protected int[] _classes;
+	protected int _level;
+	
+	public ActiveAbility( CharacterEntity master ) 
+	{
+		_master = master;
+	}
+	
+	public void castAbility( CharacterEntity target )
+	{
+		ArrayList<CharacterEntity> targets = getTargets( target );
+		applyAbility( targets );
+	}
+
+	protected abstract ArrayList<CharacterEntity> getTargets( CharacterEntity target );
+	protected abstract void applyAbility( ArrayList<CharacterEntity> targets );
+	
+	@Override
+	public String toString()
+	{
+		return _name + " : " + _description;
+	}
+	
+	public String getName()
+	{
+		return _name;
+	}
+	
+	public void setName( String name )
+	{
+		_name = name;
+	}
+	
+	public String getDescription()
+	{
+		return _description;
+	}
+	
+	public void setDescription( String description )
+	{
+		_description = description;
+	}
+}

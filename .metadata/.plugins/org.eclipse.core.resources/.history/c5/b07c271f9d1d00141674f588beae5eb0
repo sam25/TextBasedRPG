@@ -1,0 +1,28 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class WeaponEquipment extends Equipment 
+{
+	private BasicStat minDamage, maxDamage;
+	private BasicStat parry;
+	protected String weaponType;
+
+	public WeaponEquipment(StatHolder stats,
+						  String name,
+						  String desc, 
+						  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+		
+		minDamage = stats.getMinDamage();
+		maxDamage = stats.getMaxDamage();
+	}
+	
+	public BasicStat getMinDamage() { return minDamage; }
+	public BasicStat getMaxDamage() { return maxDamage; }
+	public BasicStat getParry() { return parry; }
+	
+	public abstract void setWeaponType(String type);
+	public String getWeaponType() { return weaponType; }
+}

@@ -1,0 +1,27 @@
+package cscd454.dnd.Utils;
+
+import java.io.BufferedReader;
+import java.sql.*;
+
+public class DatabaseCreator 
+{
+	private Statement stmt;
+	private BufferedReader file;
+	private String query;
+	
+	public DatabaseCreator(Statement statement, BufferedReader fName) 
+	{
+		stmt = statement;
+		file = fName;
+	}
+	
+	public void BuildDatabase()
+	{
+	
+	}
+	
+	public void setupQuery()
+	{
+		
+	}
+}

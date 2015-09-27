@@ -1,0 +1,28 @@
+package cscd454.dnd.Stats;
+
+public class BasicCombatStat extends Stat {
+
+	public BasicCombatStat(double value, String type)
+	{
+		super(value, type);
+	}
+	
+	public static boolean isBasicCombatStat(Stat s)
+	{
+		if(s.getType().equalsIgnoreCase("parry")) {
+			return true;
+		} else if(s.getType().equalsIgnoreCase("block")) {
+			return true;
+		} else if(s.getType().equalsIgnoreCase("damage")) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public Stat getInstance() {
+		return new BasicCombatStat(getValue(), getType());
+	}
+
+}

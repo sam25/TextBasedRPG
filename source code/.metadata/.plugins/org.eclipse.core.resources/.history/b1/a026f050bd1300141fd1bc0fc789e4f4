@@ -1,0 +1,12 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class ArmorEquipment extends Equipment 
+{
+	private boolean hasArmorType;
+	private Armor armorVal;
+	private String armorType;
+	
+	
+}

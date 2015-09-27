@@ -1,0 +1,29 @@
+package cscd454.dnd.Items;
+
+public class WeaponFactory extends EquipmentFactory {
+
+	@Override
+	public void generateStats() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String createName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String createDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String chooseStat() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

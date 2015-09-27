@@ -1,0 +1,50 @@
+package cscd454.dnd.Items;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class EquipmentFactory 
+{
+	
+	protected ItemInfoHandler infoHandler;
+	protected StatHolder stats;
+	protected Random rand;
+	protected ArrayList<String> includedStats;
+	protected int level;
+	private final int numNonArmorStats = 5;  
+	
+	protected EquipmentFactory(int lvl) 
+	{
+		includedStats = new ArrayList<String>();
+		level = lvl;
+		rand = new Random();
+	}
+	
+	public abstract void generateStats();
+	public abstract String chooseStat();
+	
+	protected String choosePrimaryStat()
+	{
+		int num = rand.nextInt() % numNonArmorStats;
+		
+		if(num == 0) {
+			return "Strength";
+		} else if(num == 1) {
+			return "Dexterity";
+		} else if(num == 2) {
+			return "Intelligence";
+		} else if(num == 3) {
+			return "Wisdom";
+		} else {
+			return "Constitution";
+		}	
+	}
+	
+	protected String generateName()
+	{
+		
+	}
+	
+}

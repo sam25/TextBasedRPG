@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1323</x>
+      <y>315</y>
+      <w>196</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>/Equipment/
+--
+-name : String
+-desc : String
+-levelReq : int
+-weight : Weight
+-stats : StatHolder
+--
++getDesc() : String
++getLevelReq() : int
++getStatHolder() : StatHolder
++toString() : String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1708</x>
+      <y>329</y>
+      <w>175</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>/UseableItem/
+--
+-name : String
+-weight : Weight
+-maxStackSize : int
+-currStackSize : int
+--
++useItem(Character useTarget): void
++increaseStack(int numItems) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1141</x>
+      <y>483</y>
+      <w>238</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>/ArmorEquipment/
+--
+-armorType : String
+-armorSlot : String
+-armorVal : Armor
+--
+-setArmorType() : void
+-setArmorSlot() : void
+_+validArmorTypeOrSlot() : boolean_
+
++isSameArmorType(String type) : boolean
++canEquipArmorType(String charArmorType) 
++getAmorVal() : Armor
++getArmorType() : String
++getArmorSlot() : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1253</x>
+      <y>434</y>
+      <w>97</w>
+      <h>62</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>84;21;21;49</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1428</x>
+      <y>504</y>
+      <w>196</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>/WeaponEquipment/
+--
+-damage : BasicStat
+-parry : BasicStat
+-weaponType : String
+--
++getDamage() : BasicStat
++getParry() : BasicStat
++getWeaponType() : String
+/#setWeaponType(String type) : void/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1477</x>
+      <y>434</y>
+      <w>62</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;49;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1421</x>
+      <y>658</y>
+      <w>84</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>/OneHandWeapon/
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1526</x>
+      <y>658</y>
+      <w>91</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>/TwoHandWeapon/
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1155</x>
+      <y>693</y>
+      <w>154</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>/ShieldEquipment/
+--
+blockChance : BasicStat
+--
++getBlock() : BasicStat
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1225</x>
+      <y>623</y>
+      <w>34</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1442</x>
+      <y>595</y>
+      <w>62</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>49;21;21;63</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1540</x>
+      <y>595</y>
+      <w>41</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;28;63</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1708</x>
+      <y>504</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>HealthPotion
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1715</x>
+      <y>413</y>
+      <w>62</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>49;21;21;91</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1806</x>
+      <y>504</y>
+      <w>98</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>EssenceOfTheFallen
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1806</x>
+      <y>413</y>
+      <w>55</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;42;91</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1162</x>
+      <y>42</y>
+      <w>266</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>/PrimaryStatHolder/
+--
+-str : BasicStat
+-dex : BasicStat
+-int : BasicStat
+-wis : BasicStat
+--
++getStrength() : BasicStat
++setStrength(BasicStat s) : void
++getDexterity() : BasicStat
++setDexterity(BasicStat d) : void
++getIntelligence() : BasicStat
++setIntelligence(BasicStat i) : void
++getWisdom() : BasicStat
++setWisdom(BasicStat w) : void
++toString() : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1267</x>
+      <y>196</y>
+      <w>160</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;147;119</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1582</x>
+      <y>196</y>
+      <w>161</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Item
+--
++getWeight() : Weight
++getName() : String
++isEquipable() : boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1428</x>
+      <y>217</y>
+      <w>167</w>
+      <h>111</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>154;21;21;98</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1708</x>
+      <y>245</y>
+      <w>62</w>
+      <h>97</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>21;21;49;84</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1078</x>
+      <y>42</y>
+      <w>97</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>
+lt=&lt;-</panel_attributes>
+    <additional_attributes>21;21;21;56;84;56</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Text</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>21</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1071</x>
+      <y>42</y>
+      <w>56</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>/BasicStat/
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>903</x>
+      <y>217</y>
+      <w>196</w>
+      <h>273</h>
+    </coordinates>
+    <panel_attributes>StatHolder
+--
+-weight : Weight
+-armor : Armor
+-equipmentType : String
+-equipmentSlot : String
+-block : BasicStat
+-parry : BasicStat
+-damage : BasicStat
+--
++getWeight() : Weight
++setSeight(Weight w) : void
++getArmor() : Armor
++setArmor(Armor a) : void
++getEquipmentType() : String
++setEquipmentType(String type) : void
++getEquipmentSlot() : String
++setEquipmentSlot() : String
++getParry() : BasicStat
++setParry(BasicStat p) : void
++getDamage() : BasicStat
++setDamage(BasicStat dmg) : void
++add(StatHolder s) : StatHolder
++subtract(StatHolder s) : StatHolder
++toString() : String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>987</x>
+      <y>161</y>
+      <w>188</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>175;21;21;56</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1540</x>
+      <y>462</y>
+      <w>70</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>NullEquipment
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1498</x>
+      <y>392</y>
+      <w>90</w>
+      <h>83</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>21;21;77;70</additional_attributes>
+  </element>
+</diagram>

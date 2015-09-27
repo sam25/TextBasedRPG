@@ -1,0 +1,13 @@
+package dnd;
+
+public class ItemInfoHandler 
+{
+	private static ItemInfoHandler handler = new ItemInfoHandler();
+	
+	private ItemInfoHandler() {}
+	
+	public static synchronized ItemInfoHandler getInstance()
+	{
+		return handler;
+	}
+}

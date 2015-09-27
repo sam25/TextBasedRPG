@@ -1,0 +1,50 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class WeaponEquipment extends Equipment 
+{
+	private BasicStat minDamage, maxDamage;
+	private BasicStat parry;
+	protected String weaponType;
+	protected int numSlots;
+
+	public WeaponEquipment(StatHolder stats,
+						  String name,
+						  String desc, 
+						  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+		
+		minDamage = stats.getMinDamage();
+		maxDamage = stats.getMaxDamage();
+	}
+	
+	public BasicStat getMinDamage() { return minDamage; }
+	public BasicStat getMaxDamage() { return maxDamage; }
+	public BasicStat getParry() { return parry; }
+	
+	public void setWeaponType(String type)
+	{
+		if(type.equals("Greatsword") ||
+		   type.equals("Warhammer") ||
+		   type.equals("Staff") ||
+		   type.equals("Crossbow") ||
+		   type.equals("Bow"))
+		{
+			weaponType = type;
+			numSlots = 2;
+		} else if(type.equals("Longsword") ||
+				  type.equals("Dagger") ||
+				  type.equals("OneHandMace"))
+		{
+			weaponType = type;
+			numSlots = 1;
+		} else {
+			weaponType = "Invalid";
+			numSlots = -1;
+		}
+	}
+	public String getWeaponType() { return weaponType; }
+	public int getNumItemSlots() { return numSlots; }
+}

@@ -1,0 +1,8 @@
+package cscd454.dnd.Utils;
+
+import java.sql.*;
+
+public class DatabaseCreator 
+{
+
+}

@@ -1,0 +1,104 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.BasicStat;
+
+public class ArmorFactory extends EquipmentFactory 
+{
+	private ArmorEquipment armor;
+	
+	public ArmorFactory(int lvl) { super(lvl); }
+	
+	@Override
+	public void generateStats() 
+	{
+		String armorSlot = generateArmorSlot();
+		
+		int numStats = this.infoHandler.getMaxNumStats(armorSlot);
+		String stat;
+		
+		for(int i = 0; i < numStats; i++) {
+			stat = "";
+			
+			while(includedStats.contains(stat) || stat.equals(""))
+				stat = chooseStat();
+			
+			includedStats.add(stat);
+		}
+		int statPoints, perEachStatPoints;
+		
+		if((statPoints = infoHandler.getNumStatPoints(armorSlot, level)) == -1) {
+			perEachStatPoints = 0;
+		} else {
+			perEachStatPoints = statPoints / numStats;
+		}
+		
+		// set the stats for each of the selected stats.
+		addStatPoints(perEachStatPoints);
+		 
+	}
+	
+	public void addStatPoints(int points)
+	{
+		String stat;
+		for(int i = 0; i < includedStats.size(); i++) {
+			stat = includedStats.get(i);
+			
+			if(stat.equals("Strength")) {
+				stats.setStrength(new BasicStat(points, "Strength"));
+			} else if(stat.equals("Dexterity")) {
+				stats.setDexterity(new BasicStat(points, "Dexterity"));
+			} else if(stat.equals("Intelligence")) {
+				stats.setIntelligence(new BasicStat(points, "Intelligence"));
+			} else if(stat.equals("Wisdom")) {
+				stats.setWisdom(new BasicStat(points, "Wisdom"));
+			} else if(stat.equals("Dexterity")) {
+				stats.setDexterity(new BasicStat(points, "Dexterity"));
+			} else if(stat.equals("Dexterity")) {
+				stats.setDexterity(new BasicStat(points, "Dexterity"));
+			}
+		}
+	}
+	
+	public ArmorEquipment createArmor()
+	{
+		generateStats();
+		
+		
+		
+		
+	}
+	
+	public String chooseStat()
+	{
+		
+	}
+	
+	public String generateArmorType()
+	{
+		int armorTypeIndicator = this.rand.nextInt() % 3;
+		
+		if(armorTypeIndicator == 0) {
+			return "Light";
+		} else if(armorTypeIndicator == 1) {
+			return "Medium";
+		} else {
+			return "Heavy";
+		}
+	}
+	
+	public String generateArmorSlot()
+	{
+		int armorSlotIndicator = this.rand.nextInt() % 4;
+		
+		if(armorSlotIndicator == 0) {
+			return "Head";
+		} else if(armorSlotIndicator == 1) {
+			return "Chest";
+		} else if(armorSlotIndicator == 2) {
+			return "Leg";
+		} else {
+			return "Hand";
+		}
+	}
+
+}

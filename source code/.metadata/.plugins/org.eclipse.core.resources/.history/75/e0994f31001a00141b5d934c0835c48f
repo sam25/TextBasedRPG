@@ -1,0 +1,34 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ * 
+ * Armor Stat Class
+ */
+
+package cscd454.dnd.Stats;
+
+public class Armor extends Stat
+{	
+	public Armor(double armorVal)
+	{
+		super(armorVal, "Armor");
+	}
+	
+	// return a new copy
+	@Override
+	public Stat getInstance()
+	{
+		return new Armor(getValue());
+	}
+
+	// get the mitigation the armor provides
+	public Mitigation getMitigation()
+	{
+		double value;
+		// insert calculation here
+		
+		return new Mitigation(value);
+	}
+}

@@ -1,0 +1,96 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.BasicStat;
+
+public class WeaponFactory extends EquipmentFactory 
+{
+	
+	public WeaponFactory(int level) { super(level); }
+	
+	@Override
+	public String createName() {
+		return "default name";
+	}
+
+	@Override
+	public String createDesc() {
+		return "default desc";
+	}
+
+	@Override
+	public String chooseStat() {
+		if(!includedStats.contains("Damage")) {
+			return "Damage";
+		}
+		
+		return choosePrimaryStat();
+	}
+	
+	@Override
+	public void addStatPoints(int points)
+	{
+		String stat;
+		for(int i = 0; i < includedStats.size(); i++) {
+			stat = includedStats.get(i);
+			
+			addBaseStatPoints(stat, points);
+			if(stat.equals("Damage")) {
+				stats.setMinDamage(new BasicStat(points, "Damage"));
+				stats.setMaxDamage(new BasicStat(points*2, "Damage"));
+			}
+		}
+	}
+	
+	// check that this is finished
+	public OneHandWeapon createOneHandWeapon() 
+	{
+		
+		stats.setEquipmentType(generateOneHandWeaponType());
+		stats.setEquipmentSlot("Weapon");
+		
+		name = createName();
+		desc = createDesc();
+		
+		return new OneHandWeapon(stats, name, desc, level);
+	}
+	
+	// check that this is finished
+	public TwoHandWeapon createTwoHandWeapon() 
+	{
+		stats.setEquipmentType(generateTwoHandWeaponType());
+		stats.setEquipmentSlot("Weapon");
+		
+		return new TwoHandWeapon(stats, name , desc, level);	
+	}
+		
+	public String generateOneHandWeaponType() 
+	{
+		int oneHandWeaponTypeIndicator = this.rand.nextInt() % 3;
+		
+		if(oneHandWeaponTypeIndicator == 0) {
+			return "Longsword";
+		} else if(oneHandWeaponTypeIndicator == 1) {
+			return "Dagger";
+		} else {
+			return "Cudgel";
+		}
+	}
+	
+	public String generateTwoHandWeaponType() 
+	{
+		int twoHandWeaponTypeIndicator = this.rand.nextInt() % 5;
+		
+		if(twoHandWeaponTypeIndicator == 0) {
+			return "Greatsword";
+		} else if(twoHandWeaponTypeIndicator == 1) {
+			return "Warhammer";
+		} else if(twoHandWeaponTypeIndicator == 2) {
+			return "Staff";
+		} else if(twoHandWeaponTypeIndicator == 3) {
+			return "Bow";
+		} else {
+			return "Crossbow";
+		}
+	}
+
+}

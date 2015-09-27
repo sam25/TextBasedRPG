@@ -1,0 +1,65 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.BasicStat;
+
+public class WeaponFactory extends EquipmentFactory 
+{
+	public WeaponFactory(int level) { super(level); }
+	
+	@Override
+	public String createName() {
+		return "default name";
+	}
+
+	@Override
+	public String createDesc() {
+		return "default desc";
+	}
+
+	@Override
+	public String chooseStat() {
+		if(!includedStats.contains("Damage")) {
+			return "Damage";
+		}
+		
+		return choosePrimaryStat();
+	}
+	
+	@Override
+	public void addStatPoints(int points)
+	{
+		String stat;
+		for(int i = 0; i < includedStats.size(); i++) {
+			stat = includedStats.get(i);
+			
+			addBaseStatPoints(stat, points);
+			if(stat.equals("Damage")) {
+				stats.setMinDamage(new BasicStat(points, "Damage"));
+				stats.setMaxDamage(new BasicStat(points*2, "Damage"));
+			}
+		}
+	}
+	
+	public OneHandWeapon createOneHandWeapon() {}
+	
+	public TwoHandWeapon createTwoHandWeapon() {}
+	
+	public RangedWeapon createRangedWeapon() {}
+	
+	public String generateOneHandWeaponType() 
+	{
+		
+		
+	}
+	
+	public String generateTwoHandWeaponType() 
+	{
+		
+	}
+	
+	public String generateRangedWeaponType()
+	{
+		
+	}
+
+}

@@ -1,0 +1,128 @@
+package cscd454.dnd.Stats;
+
+import cscd454.dnd.Items.ArmorEquipment;
+import cscd454.dnd.Items.ArmorEquipment.ArmorType;
+
+public class StatHolder extends PrimaryStatHolder 
+{
+	private Weight weight;
+	private Armor armor;
+	private String equipType, armorSlot;
+	private BasicStat block, parry;
+	private BasicStat minDamage, maxDamage;
+	
+	// constructors
+	public StatHolder()
+	{
+		super();
+		
+		weight = new Weight(0);
+		armor = new Armor(0);
+		equipType = "Invalid";
+		armorSlot = "Invalid";
+		block = new BasicStat(0, "Block");
+		parry = new BasicStat(0, "Parry");
+		minDamage = new BasicStat(0, "Damage");
+		maxDamage = new BasicStat(0, "Damage");
+	}
+	
+	public StatHolder(StatHolder stats)
+	{
+		super(stats);
+		
+		weight = stats.getWeight();
+		armor = stats.getArmor();
+		equipType = stats.getArmorType();
+		armorSlot = stats.getArmorSlot();
+		block = stats.getBlock();
+		parry = stats.getParry();
+		minDamage = stats.getMinDamage();
+		maxDamage = stats.getMinDamage();
+	}
+	
+	public StatHolder(BasicStat str,
+					  BasicStat dex,
+					  BasicStat intel,
+					  BasicStat wis,
+					  BasicStat cons,
+					  Weight weight,
+					  Armor armor,
+					  String armorType,
+					  String armorSlot,
+					  BasicStat block,
+					  BasicStat parry,
+					  BasicStat minDmg,
+					  BasicStat maxDmg)
+	{
+		super(str, dex, intel, wis, cons);
+		
+		this.weight = weight;
+		this.armor = armor;
+		this.equipType = armorType;
+		this.armorSlot = armorSlot;
+		this.block = block;
+		this.parry = parry;
+		this.minDamage = minDmg;
+		this.maxDamage = maxDmg;
+	}
+	
+	// get/set methods
+	public Weight getWeight() { return weight; }
+	public void setWeight(Weight w) { weight = w; }
+	
+	public Armor getArmor() { return armor; }
+	public void setArmor(Armor a) {	armor = a; }
+	
+	public String getEquipmentType() { return equipmentType; }
+	public void setEquipmentType(String type) {equipmentType = type;}
+	
+	public String getArmorSlot() { return armorSlot; }
+	public void setArmorSlot(String slot) {armorSlot = slot;}
+	
+	public BasicStat getParry() { return parry; }
+	public void setParry(BasicStat p){
+		if(p.getType().equals("Parry")) {
+			parry = p;
+		} else {
+			System.err.println("Cannot set a non-parry stat as parry");
+		}
+	}
+	
+	public BasicStat getBlock() { return block; }
+	public void setBlock(BasicStat b){
+		if(b.getType().equals("Block")) {
+			block = b;
+		} else {
+			System.err.println("Cannot set a non-block stat as block");
+		}
+	}
+	
+	public BasicStat getMinDamage() { return minDamage; }
+	public void setMinDamage(BasicStat minDmg){
+		if(minDamage.getType().equals("Damage")) {
+			minDamage = minDmg;
+		} else {
+			System.err.println("Cannot set a non-damage stat as min damace");
+		}
+	}
+	
+	public BasicStat getMaxDamage() { return maxDamage; }
+	public void setMaxDamage(BasicStat maxDmg){
+		if(minDamage.getType().equals("Damage")) {
+			maxDamage = maxDmg;
+		} else {
+			System.err.println("Cannot set a non-damage combat stat as max damace");
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

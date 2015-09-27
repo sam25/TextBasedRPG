@@ -1,0 +1,42 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ * 
+ * PrimaryStat Class
+ * 
+ * Needs overflow checks
+ */
+
+package cscd454.dnd.Stats;
+
+public class PrimaryStat extends Stat
+{
+
+	public PrimaryStat(double value, String type)
+	{
+		super(value, type);
+	}
+	
+	public static boolean isPrimaryStat(Stat s)
+	{
+		// maybe use database
+		if(s.getType().equalsIgnoreCase("strength") ||
+		   s.getType().equalsIgnoreCase("Dexterity") ||
+		   s.getType().equalsIgnoreCase("Intelligence") ||
+		   s.getType().equalsIgnoreCase("Wisdom") ||
+		   s.getType().equalsIgnoreCase("Constitution")) 
+		{
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public Stat getInstance()
+	{
+		return new PrimaryStat(getValue(), getType());
+	}
+}

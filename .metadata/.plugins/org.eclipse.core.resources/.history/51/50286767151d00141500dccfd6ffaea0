@@ -1,0 +1,32 @@
+package cscd454.dnd.Items;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class EquipmentFactory 
+{
+	
+	protected ItemInfoHandler infoHandler;
+	protected StatHolder stats;
+	protected Random rand;
+	protected ArrayList<String> includedStats;
+	protected int level;
+	
+	protected EquipmentFactory(int lvl) 
+	{
+		includedStats = new ArrayList();
+		level = lvl;
+		rand = new Random();
+	}
+	
+	public abstract void generateStats();
+	public abstract String chooseStat();
+	
+	public String choosePrimaryStat()
+	{
+		
+	}
+	
+}

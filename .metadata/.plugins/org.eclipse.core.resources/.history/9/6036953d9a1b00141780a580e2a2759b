@@ -1,0 +1,56 @@
+package cscd454.dnd.Utils;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.*;
+
+public class DatabaseCreator 
+{
+	private Statement stmt;
+	private BufferedReader file;
+	private String query, filename;
+	
+	public DatabaseCreator(Statement statement, String fName) 
+	{
+		stmt = statement;
+		filename = fName;
+		
+		try{
+			file = new BufferedReader(new FileReader(fName));
+		} catch(FileNotFoundException e) {
+			System.err.println("Could not open database creation file " + filename);
+			file = null;
+		}
+	}
+	
+	public void BuildDatabase()
+	{
+		try {
+			while(setupQuery()) 
+			{
+				stmt.executeUpdate(query);
+			}
+		} catch(SQLException e) {
+			System.err.println("Error building database from filename: " + filename);
+		}
+	}
+	
+	public boolean setupQuery() throws IOException
+	{
+		query = "";
+		
+		if(file == null) { throw new IOException(); }
+		
+		try { 
+			while(!query.contains(";")) {
+				query += file.readLine();
+			}
+			return true;
+		} catch(IOException e) {
+			System.err.println("Failure in setupQuery using filename: " + filename);
+			return false;
+		}
+	}
+}

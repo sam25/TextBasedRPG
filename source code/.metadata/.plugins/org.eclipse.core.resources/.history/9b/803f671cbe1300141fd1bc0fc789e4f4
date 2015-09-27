@@ -1,0 +1,28 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class ArmorEquipment extends Equipment 
+{
+	private boolean hasArmorType;
+	private Armor armorVal;
+	private String armorType;
+	
+	public ArmorEquipment(StatHolder stats,
+						  String name,
+						  String desc, 
+						  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+		
+		armorVal = stats.getArmor();
+		armorType = stats.getArmorType();
+		
+		hasValidArmorType(armorType);
+	}
+	
+	public static hasValidArmorType(String a)
+	{
+		if(a.)
+	}
+}

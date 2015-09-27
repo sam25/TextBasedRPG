@@ -1,0 +1,87 @@
+package cscd454.dnd.Items;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class EquipmentFactory 
+{
+	
+	protected ItemInfoHandler infoHandler;
+	protected StatHolder stats;
+	protected Random rand;
+	protected ArrayList<String> includedStats;
+	protected int level;
+	protected String name, desc;
+	private final int numNonArmorStats = 5;  
+	
+	protected EquipmentFactory(int lvl) 
+	{
+		includedStats = new ArrayList<String>();
+		level = lvl;
+		rand = new Random();
+	}
+
+	public abstract String createName();
+	public abstract String createDesc();
+	public abstract String chooseStat();
+	
+	protected String choosePrimaryStat()
+	{
+		int num = rand.nextInt() % numNonArmorStats;
+		
+		if(num == 0) {
+			return "Strength";
+		} else if(num == 1) {
+			return "Dexterity";
+		} else if(num == 2) {
+			return "Intelligence";
+		} else if(num == 3) {
+			return "Wisdom";
+		} else {
+			return "Constitution";
+		}	
+	}
+
+	public void generateStats(String type) 
+	{		
+		int numStats = this.infoHandler.getMaxNumStats(type);
+		String stat = "";
+		
+		for(int i = 0; i < numStats; i++, stat = "") {			
+			while(includedStats.contains(stat) || stat.equals("")){
+				stat = chooseStat();
+			}
+			includedStats.add(stat);
+		}
+		int statPoints, perEachStatPoints;
+		
+		if((statPoints = infoHandler.getNumStatPoints(type, level)) == -1) {
+			perEachStatPoints = 0;
+		} else {
+			perEachStatPoints = statPoints / numStats;
+		}
+		
+		// set the stats for each of the selected stats.
+		addStatPoints(perEachStatPoints);
+		 
+	}
+	
+	public abstract void addStatPoints(int points);
+	
+	public void addBaseStatPoints(String stat, int points)
+	{
+		if(stat.equals("Strength")) {
+			stats.setStrength(new BasicStat(points, "Strength"));
+		} else if(stat.equals("Dexterity")) {
+			stats.setDexterity(new BasicStat(points, "Dexterity"));
+		} else if(stat.equals("Intelligence")) {
+			stats.setIntelligence(new BasicStat(points, "Intelligence"));
+		} else if(stat.equals("Wisdom")) {
+			stats.setWisdom(new BasicStat(points, "Wisdom"));
+		} else if(stat.equals("Constitution")) {
+			stats.setDexterity(new BasicStat(points, "Constitution"));
+		}
+	}
+}

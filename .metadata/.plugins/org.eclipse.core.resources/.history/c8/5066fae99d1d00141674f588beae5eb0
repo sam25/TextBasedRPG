@@ -1,0 +1,11 @@
+package cscd454.dnd.Items;
+
+public class RangedWeapon extends WeaponEquipment {
+
+	@Override
+	public void setWeaponType(String type) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

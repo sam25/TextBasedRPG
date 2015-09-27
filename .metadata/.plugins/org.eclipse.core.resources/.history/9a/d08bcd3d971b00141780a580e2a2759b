@@ -1,0 +1,13 @@
+package cscd454.dnd.Utils;
+
+import java.sql.*;
+
+public class DatabaseCreator 
+{
+	private Statement stmt;
+	
+	public DatabaseCreater(Statement statement) 
+	{
+		stmt = statement;
+	}
+}

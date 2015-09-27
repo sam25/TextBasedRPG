@@ -1,0 +1,90 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class ArmorEquipment extends Equipment 
+{
+	private boolean hasArmorType;
+	private Armor armorVal;
+	private ArmorType armorType;
+	
+	public enum ArmorType
+	{
+		LIGHT_ARMOR("Light"), MEDIUM_ARMOR("Medium"), HEAVY_ARMOR("Heavy"),
+		INVALID("Invalid");
+		
+		private final String type;
+		
+		private ArmorType(String aType)
+		{
+			if(aType.equals("Light") || 
+			   aType.equals("Medium") || 
+			   aType.equals("Heavy"))
+			{
+				type = aType;
+			} else {
+				type = "Invalid";
+			}			
+		}
+		
+		public static boolean validArmorType(ArmorType aType) 
+		{
+			return aType.equals(INVALID) ? false : true;
+		}
+		
+		public boolean canEquip(String charArmorType)
+		{
+			if(charArmorType.equals(HEAVY_ARMOR)) 
+			{
+				return true;
+			}
+			else if(charArmorType.equals(MEDIUM_ARMOR)&&
+					 (type.equals(MEDIUM_ARMOR) || 
+					  type.equals(LIGHT_ARMOR)))
+			{
+				return true;
+			} 
+			else if(charArmorType.equals(LIGHT_ARMOR) &&
+					  type.equals(LIGHT_ARMOR))
+			{
+				return true;
+			}
+			
+			return false;
+		}
+				
+		public String toString(){ return type; }
+	}
+	
+	public ArmorEquipment(StatHolder stats,
+						  String name,
+						  String desc, 
+						  int levelReq)
+	{
+		super(stats, name, desc, levelReq);
+		
+		armorVal = stats.getArmor();
+		armorType = stats.getArmorType();
+		
+		hasArmorType = hasValidArmorType(armorType) ? true : false;
+	}
+	
+	public static boolean hasValidArmorType(ArmorType type)
+	{
+		return ArmorType.validArmorType(type);
+	}
+	
+	public boolean isSameArmorType(String type)
+	{
+		return armorType.toString().equals(type);
+	}
+	
+	public boolean canEquip(String charArmortype)
+	{
+		return armorType.canEquip(charArmortype);
+	}
+	
+	public String getArmorType() { return this.armorType.toString(); }
+}
+
+

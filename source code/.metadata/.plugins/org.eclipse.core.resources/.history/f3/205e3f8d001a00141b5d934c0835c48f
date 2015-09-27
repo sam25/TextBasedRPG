@@ -1,0 +1,43 @@
+/* Bryan Anders
+ * Sami Awwad
+ * Samir Ouahhabi
+ * 
+ * Team abeeseesdee
+ * 
+ * Health Stat Class
+ */
+
+package cscd454.dnd.Stats;
+
+public class Health extends Stat
+{
+	
+	public Health(double healthVal)
+	{		
+		super(healthVal, "Health");
+		
+		if(getValue() < 0) {
+			this.setValue(0);
+		}
+	}
+
+	
+	// return a new copy
+	@Override
+	public Stat getInstance()
+	{
+		return new Health(this.getValue());
+	}
+	
+	// suffer an attack
+	public Health sufferAttack(Stat atk)
+	{
+		return new Health(this.getValue() - atk.getValue());
+	}
+	
+	// check if the attack is higher than 0
+	public boolean isAboveZero()
+	{
+		return getValue() > 0 ? true : false;
+	}
+}

@@ -1,0 +1,22 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.*;
+
+public abstract class EquipmentFactory 
+{
+	
+	protected ItemInfoHandler infoHandler;
+	protected StatHolder stats;
+	private int level;
+	
+	protected EquipmentFactory(int lvl) 
+	{
+		level = lvl;
+	}
+	
+	public int setLevel(int lvl) { level = lvl; }
+	public int getLevel() { return level; }
+	
+	public 
+
+}

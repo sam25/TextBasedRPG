@@ -1,0 +1,86 @@
+package cscd454.dnd.Items;
+
+import cscd454.dnd.Stats.BasicStat;
+
+public class ArmorFactory extends EquipmentFactory 
+{
+	private ArmorEquipment armor;
+	
+	public ArmorFactory(int lvl) { super(lvl); }
+	
+
+	@Override
+	public void addStatPoints(int points)
+	{
+		String stat;
+		for(int i = 0; i < includedStats.size(); i++) {
+			stat = includedStats.get(i);
+			
+			addBaseStatPoint(stat, points);
+			if(stat.equals("Armor")) {
+				stats.setDexterity(new BasicStat(points, "Armor"));
+			}
+		}
+	}
+	
+	public ArmorEquipment createArmor()
+	{
+		generateStats();
+		String name = createName();
+		String desc = createDesc();
+		
+		return new ArmorEquipment(stats, name, desc, level);		
+	}
+	
+	public String chooseStat()
+	{
+		if(!includedStats.contains("Armor")) {
+			return "Armor";
+		}
+		
+		return choosePrimaryStat();
+	}
+	
+	public String generateArmorType()
+	{
+		int armorTypeIndicator = this.rand.nextInt() % 3;
+		
+		if(armorTypeIndicator == 0) {
+			return "Light";
+		} else if(armorTypeIndicator == 1) {
+			return "Medium";
+		} else {
+			return "Heavy";
+		}
+	}
+	
+	public String generateArmorSlot()
+	{
+		int armorSlotIndicator = this.rand.nextInt() % 4;
+		
+		if(armorSlotIndicator == 0) {
+			return "Head";
+		} else if(armorSlotIndicator == 1) {
+			return "Chest";
+		} else if(armorSlotIndicator == 2) {
+			return "Leg";
+		} else {
+			return "Hand";
+		}
+	}
+	
+	// a placeholder
+	@Override
+	public String createName()
+	{
+		return "default name";
+	}
+	
+	// a placeholder
+	@Override
+	public String createDesc()
+	{
+		return "default desc";
+	}
+
+}

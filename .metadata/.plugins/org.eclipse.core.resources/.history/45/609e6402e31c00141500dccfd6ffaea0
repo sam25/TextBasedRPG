@@ -1,0 +1,52 @@
+package cscd454.dnd.Items;
+
+public class ArmorFactory extends EquipmentFactory 
+{
+	private ArmorEquipment armor;
+	
+	public ArmorFactory(int lvl) { super(lvl); }
+	
+	@Override
+	public void generateStats() 
+	{
+		int armorSlot = generateArmorSlot();
+		
+		this.infoHandler.getMaxNumStats()
+	}
+	
+	public ArmorEquipment createArmor()
+	{
+		generateStats();
+		
+		
+	}
+	
+	public String generateArmorType()
+	{
+		int armorTypeIndicator = this.rand.nextInt() % 3;
+		
+		if(armorTypeIndicator == 0) {
+			return "Light";
+		} else if(armorTypeIndicator == 1) {
+			return "Medium";
+		} else {
+			return "Heavy";
+		}
+	}
+	
+	public String generateArmorSlot()
+	{
+		int armorSlotIndicator = this.rand.nextInt() % 4;
+		
+		if(armorSlotIndicator == 0) {
+			return "Head";
+		} else if(armorSlotIndicator == 1) {
+			return "Chest";
+		} else if(armorSlotIndicator == 2) {
+			return "Leg";
+		} else {
+			return "Hand";
+		}
+	}
+
+}
